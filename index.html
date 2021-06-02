@@ -1,6 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang = "en">
 <head>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <meta charset="utf-8"/>
+</head>
+  <body>
+    <p>Attempting to redirect...</p>
+  </body>
+  
 <script>
   const regexB64Match = /.*data:text\/html;base64,([a-zA-Z0-9=+]+)/.exec(location.href);
   const regexEscMatch = /.*data:text\/html,([a-zA-Z0-9=@/+%]+)/.exec(location.href);
@@ -25,13 +32,14 @@
   document.body.appendChild(redirectLink);
   
   // Also, retry with window.location = ...
-  setTimeout(() =>
+  const tryRedirect = () =>
   {
     window.location = targetURL;
-  }, 1000);
+    
+    redirectLink.click();
+  };
+  
+  document.body.onpointermove = tryRedirect;
+  setTimeout(tryRedirect, 1000);
 </script>
-</head>
-  <body>
-    <p>Attempting to redirect...</p>
-  </body>
 </html>
