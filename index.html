@@ -2,7 +2,13 @@
 <html>
 <head>
 <script>
-location.href = (/.*data:text\/html;base64,([a-zA-Z0-9=+]+)/.exec(location.href) || [0,"data:text/html," + escape(`<h1>Invalid URL</h1>`)])[1];
+  const targetURL = (/.*data:text\/html;base64,([a-zA-Z0-9=+]+)/.exec(location.href) || [0,"data:text/html," + escape(`<h1>Invalid URL</h1>`)])[1];
+  
+  // See https://stackoverflow.com/questions/503093/how-do-i-redirect-to-another-webpage
+  location.replace(targetURL);
 </script>
 </head>
+  <body>
+    <p>Something went wrong...</p>
+  </body>
 </html>
