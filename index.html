@@ -1,0 +1,8 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script>
+location.href = (/.*data:text\/html;base64,([a-zA-Z0-9=+]+)/.exec(location.href) || [0,"data:text/html," + escape(`<h1>Invalid URL</h1>`)])[1];
+</script>
+</head>
+</html>
